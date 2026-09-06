@@ -1,0 +1,23 @@
+[project]
+name = "rag-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Ujjwalpaliwal", email = "ujjwalpaliwal35@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pymupdf>=1.28.2",
+    "tqdm>=4.70.0",
+    "sentence-transformers>=3.0.0",
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+rag-project = "rag_project:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
