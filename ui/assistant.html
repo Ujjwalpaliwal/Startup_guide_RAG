@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Saarthi - Startup Saarthi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><canvas data-orb data-state="working" data-size="34" data-theme="auto"></canvas></span>
+        Startup Saarthi
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="assistant.html" class="active">Ask Saarthi</a>
+        <a href="explore.html">Knowledge Base</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="assistant.html">New chat</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="chat-page">
+    <div class="chat-topbar">
+      <canvas class="orb-avatar" id="orb-avatar" data-orb data-state="working" data-size="64" data-theme="auto"></canvas>
+      <div>
+        <div class="cb-name">Saarthi</div>
+        <div class="cb-tag">Your Startup India assistant</div>
+      </div>
+      <div class="cb-side">
+        <span class="status-pill" id="status-pill"><span class="s-dot"></span><span id="status-label">Ready</span></span>
+        <button class="btn btn-secondary btn-sm" id="sources-toggle">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-right: 6px;"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          Sources
+        </button>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+      <div class="msg assistant">
+        <span class="m-avatar orb-av"><canvas data-orb data-state="working" data-size="20" data-theme="auto"></canvas></span>
+        <div class="m-bubble">
+          <p>Namaste! I'm Saarthi. I've read the official Startup India handbooks - registration, tax, funding, IPR, and go-to-market - and I answer with citations you can trace back to the source.</p>
+          <p>Ask me things like:</p>
+          <ul>
+            <li>How do I register my startup under Startup India?</li>
+            <li>What tax exemptions are available?</li>
+            <li>What is the Startup India Seed Fund Scheme?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="composer-status">
+        <span class="status-pill" id="compose-status"><span class="s-dot"></span><span id="compose-label">Ask me anything</span></span>
+        <span class="sources-count" id="sources-count">All 5 sources active</span>
+      </div>
+      <form class="chat-input-wrap" id="chat-form">
+        <label class="chat-input" for="chat-input">
+          <textarea id="chat-input" rows="1" placeholder="Ask about registration, funding, tax, IPR..." aria-label="Your question"></textarea>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </label>
+        <div class="prompt-strip">
+          <button type="button" class="chip" data-ask="How do I register my startup under Startup India?">Register a startup</button>
+          <button type="button" class="chip" data-ask="What tax exemptions are available for startups?">Tax exemptions</button>
+          <button type="button" class="chip" data-ask="What is the Startup India Seed Fund Scheme?">Seed fund scheme</button>
+          <button type="button" class="chip" data-ask="How do I protect my intellectual property?">IPR support</button>
+          <button type="button" class="chip" data-ask="Can a startup be wound up faster?">Fast exit</button>
+        </div>
+        <p class="chat-disclaimer">Answers are drafts retrieved from the guide corpus. Always verify against official government portals before acting.</p>
+      </form>
+    </div>
+  </main>
+
+  <aside class="drawer" id="sources-drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Search scope</h3>
+      <button class="drawer-close" id="drawer-close" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="sc-dropdown-note">
+      <span>Retrieval sources</span>
+      <span class="sc-count" id="drawer-count">5 / 5</span>
+    </div>
+    <div class="src-group">
+      <label class="src-check">
+        <input type="checkbox" class="src-toggle" value="regi" checked />
+        <span>
+          <span class="sc-name">Startup Registration Complete Guide</span>
+          <span class="sc-meta">23 chunks - registration steps</span>
+        </span>
+      </label>
+      <label class="src-check">
+        <input type="checkbox" class="src-toggle" value="law" checked />
+        <span>
+          <span class="sc-name">India Startup Law &amp; Policy Guidebook</span>
+          <span class="sc-meta">266 chunks - laws, tax, IPR</span>
+        </span>
+      </label>
+      <label class="src-check">
+        <input type="checkbox" class="src-toggle" value="gotomarket" checked />
+        <span>
+          <span class="sc-name">Go-to-Market Guide for India</span>
+          <span class="sc-meta">55 chunks - market entry</span>
+        </span>
+      </label>
+      <label class="src-check">
+        <input type="checkbox" class="src-toggle" value="kv5" checked />
+        <span>
+          <span class="sc-name">Startup India Kit (v5)</span>
+          <span class="sc-meta">25 chunks - benefits overview</span>
+        </span>
+      </label>
+      <label class="src-check">
+        <input type="checkbox" class="src-toggle" value="k2020" checked />
+        <span>
+          <span class="sc-name">Startup India Kit (Mar 2020)</span>
+          <span class="sc-meta">24 chunks - starter edition</span>
+        </span>
+      </label>
+    </div>
+    <div class="note-box">
+      Answers are retrieved only from the sources you keep switched on. The model layer will call the same scope when wired end to end.
+    </div>
+    <div class="drawer-foot">
+      <button class="btn btn-primary" id="drawer-done" style="width: 100%;">Done</button>
+    </div>
+  </aside>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <script src="orb.js"></script>
+  <script src="data/chunks.js"></script>
+  <script src="answer-engine.js"></script>
+  <script src="thinking.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

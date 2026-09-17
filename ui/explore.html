@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge Base - Startup Saarthi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><canvas data-orb data-state="working" data-size="34" data-theme="auto"></canvas></span>
+        Startup Saarthi
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="assistant.html">Ask Saarthi</a>
+        <a href="explore.html" class="active">Knowledge Base</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="assistant.html">Ask a question</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-hero">
+      <div class="crumbs"><a href="index.html">Home</a> / Knowledge Base</div>
+      <h1>Knowledge Base</h1>
+      <p>
+        The entire corpus behind Saarthi - 5 official documents, split into 393 searchable
+        chunks. Browse, filter, and jump into a conversation about any document.
+      </p>
+    </div>
+
+    <div class="explore-toolbar">
+      <label class="search-field" for="doc-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="doc-search" type="text" placeholder="Search documents, e.g. tax exemption" autocomplete="off" />
+      </label>
+      <div class="filter-chips">
+        <button type="button" class="chip active" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="registration">Registration</button>
+        <button type="button" class="chip" data-filter="tax">Tax</button>
+        <button type="button" class="chip" data-filter="funding">Funding</button>
+        <button type="button" class="chip" data-filter="market">Market</button>
+      </div>
+    </div>
+
+    <div class="doc-list" id="doc-list">
+
+      <article class="doc-card" data-search="India Startup Law &amp; Policy Guidebook law tax ipr compliance exempt balance-loss register policy legal"
+        data-cats="registration tax funding">
+        <div class="doc-icon doc-violet">LAW &amp;<br />POLICY</div>
+        <div class="doc-body">
+          <h3>India Startup Law &amp; Policy Guidebook</h3>
+          <div class="doc-meta">
+            <span><b>266</b> chunks</span>
+            <span><b>236</b> pages referenced</span>
+            <span>Core legal reference</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14px; margin: 0 0 12px;">
+            The deepest source: startup definition, DPIIT recognition mechanics, income-tax sections,
+            IPR facilitation, compliance, and insolvency / fast-exit frameworks.
+          </p>
+          <div class="doc-tags">
+            <span class="chip">Tax &amp; 80-IAC</span>
+            <span class="chip">IPR support</span>
+            <span class="chip">Fast exit</span>
+            <span class="chip">Compliance</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <a class="btn btn-secondary btn-sm" href="assistant.html">Open</a>
+          <button class="btn btn-ghost btn-sm" data-ask="What does the India Startup Law &amp; Policy Guidebook say about DPIIT recognition?">Ask about it</button>
+        </div>
+      </article>
+
+      <article class="doc-card" data-search="Go to Market Guide India market pricing customer channels sales distribution growth revenue reach"
+        data-cats="market">
+        <div class="doc-icon">GO<br />MARKET</div>
+        <div class="doc-body">
+          <h3>Go-to-Market Guide for India</h3>
+          <div class="doc-meta">
+            <span><b>55</b> chunks</span>
+            <span>Market entry playbook</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14px; margin: 0 0 12px;">
+            Practical playbook for entering the Indian market: sizing, pricing, distribution
+            channels, and go-to-market motions for consumer and B2B products.
+          </p>
+          <div class="doc-tags">
+            <span class="chip">Market sizing</span>
+            <span class="chip">Pricing</span>
+            <span class="chip">Channels</span>
+            <span class="chip">GTM motion</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <a class="btn btn-secondary btn-sm" href="assistant.html">Open</a>
+          <button class="btn btn-ghost btn-sm" data-ask="How should I price and distribute my product in India?">Ask about it</button>
+        </div>
+      </article>
+
+      <article class="doc-card" data-search="Startup India Kit v5 startup recognition benefits seed fund programme schemes tax registration incentives overview"
+        data-cats="registration tax funding">
+        <div class="doc-icon doc-green">KIT<br />v5</div>
+        <div class="doc-body">
+          <h3>Startup India Kit (v5)</h3>
+          <div class="doc-meta">
+            <span><b>25</b> chunks</span>
+            <span>Hands-on handbook</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14px; margin: 0 0 12px;">
+            The official handbook covering DPIIT recognition, the Startup India portal, incentives
+            checklist, and how to avail each benefit step by step.
+          </p>
+          <div class="doc-tags">
+            <span class="chip">DP-IIT recognition</span>
+            <span class="chip">Incentives</span>
+            <span class="chip">Portal walkthrough</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <a class="btn btn-secondary btn-sm" href="assistant.html">Open</a>
+          <button class="btn btn-ghost btn-sm" data-ask="What does the Startup India Kit say about the portal and incentives?">Ask about it</button>
+        </div>
+      </article>
+
+      <article class="doc-card" data-search="Startup India Kit March 2020 starter kit entrepreneur visionaries schemes mentors investors registration
+        incubators accelerators"
+        data-cats="registration funding">
+        <div class="doc-icon doc-green">KIT<br />2020</div>
+        <div class="doc-body">
+          <h3>Startup India Kit (March 2020)</h3>
+          <div class="doc-meta">
+            <span><b>24</b> chunks</span>
+            <span>Starter edition</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14px; margin: 0 0 12px;">
+            The starter kit for budding entrepreneurs: pro-bono services, knowledge modules,
+            idea banks, and how to reach mentors, investors, and incubators on the platform.
+          </p>
+          <div class="doc-tags">
+            <span class="chip">Mentors</span>
+            <span class="chip">Incubators</span>
+            <span class="chip">Knowledge modules</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <a class="btn btn-secondary btn-sm" href="assistant.html">Open</a>
+          <button class="btn btn-ghost btn-sm" data-ask="How can I find mentors and incubators through Startup India?">Ask about it</button>
+        </div>
+      </article>
+
+      <article class="doc-card" data-search="Startup registration complete guide registration steps eligibility DPIIT apply certificate startup india portal
+        procedure"
+        data-cats="registration">
+        <div class="doc-icon">REG</div>
+        <div class="doc-body">
+          <h3>Startup Registration Complete Guide</h3>
+          <div class="doc-meta">
+            <span><b>23</b> chunks</span>
+            <span>Step-by-step walkthrough</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14px; margin: 0 0 12px;">
+            A focused, step-by-step guide to registering on the Startup India portal and obtaining
+            DPIIT recognition - eligibility, documents, and the application flow.
+          </p>
+          <div class="doc-tags">
+            <span class="chip">Eligibility</span>
+            <span class="chip">Application</span>
+            <span class="chip">Documentation</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <a class="btn btn-secondary btn-sm" href="assistant.html">Open</a>
+          <button class="btn btn-ghost btn-sm" data-ask="Walk me through the startup registration step by step.">Ask about it</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><canvas data-orb data-state="working" data-size="34" data-theme="auto"></canvas></span>
+        Startup Saarthi
+      </a>
+      <p class="footer-note">UI concept for a RAG assistant built on the Startup India Kit corpus. Prototype only - not yet connected to the retrieval pipeline.</p>
+    </div>
+  </footer>
+
+  <script src="orb.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

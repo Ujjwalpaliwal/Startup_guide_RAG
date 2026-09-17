@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startup Saarthi - Your Startup India Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><canvas data-orb data-state="working" data-size="34" data-theme="auto"></canvas></span>
+        Startup Saarthi
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="assistant.html">Ask Saarthi</a>
+        <a href="explore.html">Knowledge Base</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="assistant.html">Ask a question</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="badge"><span class="badge-dot"></span> Powered by 5 official Startup India documents</span>
+      <h1>Start lean. Register right.<br /><span class="grad">Ask everything about starting up in India.</span></h1>
+      <p class="lead">
+        Startup Saarthi is an AI assistant that answers your registration, funding,
+        tax, and compliance questions - grounded only in official Startup India guides, with citations.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="assistant.html">
+          Start a conversation
+        </a>
+        <a class="btn btn-secondary" href="explore.html">Browse the guides</a>
+      </div>
+
+      <form class="ask-box" id="ask-box" action="assistant.html">
+        <div class="ask-row">
+          <input id="ask-input" name="q" type="text" placeholder="Try: How do I get DPIIT recognition for my startup?" autocomplete="off" />
+          <button class="btn btn-primary btn-sm" type="submit">Ask</button>
+        </div>
+        <div class="ask-suggestions">
+          <button type="button" class="chip" data-ask="How do I register my startup under Startup India?">Register my startup</button>
+          <button type="button" class="chip" data-ask="What tax exemptions are available for startups?">Tax benefits</button>
+          <button type="button" class="chip" data-ask="What funding schemes can I apply for?">Funding options</button>
+          <button type="button" class="chip" data-ask="How do I protect my intellectual property?">IPR support</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-inner" style="display: contents;">
+      <div class="stat"><b>5</b><span>Official source documents</span></div>
+      <div class="stat"><b>393</b><span>Searchable knowledge chunks</span></div>
+      <div class="stat"><b>6+</b><span>Guide categories covered</span></div>
+      <div class="stat"><b>Every</b><span>answer cites its source</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything a founder needs</h2>
+        <p>One assistant that has read the government handbooks so you don't have to.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="feature-card">
+          <div class="ic ic-orange">A</div>
+          <h3>Ask anything, get cited answers</h3>
+          <p>Questions about registration, eligibility, or schemes are answered with direct references to page numbers in the official guides.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ic ic-violet">J</div>
+          <h3>Read before you commit</h3>
+          <p>Browse the full knowledge base - DPIIT recognition, tax laws, IPR, funding - without juggling five PDFs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ic ic-green">S</div>
+          <h3>Grounded, not generated</h3>
+          <p>Every reply is retrieved from the Startup India Kit and Policy Guidebook corpus, so you can trace claims back to the source.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Popular topics</h2>
+        <p>Jump straight into what matters most for your stage.</p>
+      </div>
+
+      <div class="topic-grid" id="topic-grid">
+        <button class="topic-card" data-chat-page="How do I register my startup under Startup India?">
+          <span class="tc-ic">1</span>
+          <span class="tc-body"><span class="tc-title">Registration Process</span><span class="tc-sub">Startup India portal &amp; DPIIT</span></span>
+          <span class="tarrow">→</span>
+        </button>
+        <button class="topic-card" data-chat-page="How does DPIIT recognition work and why should I get it?">
+          <span class="tc-ic">2</span>
+          <span class="tc-body"><span class="tc-title">DPIIT Recognition</span><span class="tc-sub">Eligibility &amp; benefits</span></span>
+          <span class="tarrow">→</span>
+        </button>
+        <button class="topic-card" data-chat-page="What tax exemptions are available for startups?">
+          <span class="tc-ic">3</span>
+          <span class="tc-body"><span class="tc-title">Tax Exemptions</span><span class="tc-sub">80-IAC, 54GB, ESOPs</span></span>
+          <span class="tarrow">→</span>
+        </button>
+        <button class="topic-card" data-chat-page="What funding schemes can I apply for?">
+          <span class="tc-ic">4</span>
+          <span class="tc-body"><span class="tc-title">Funding &amp; Seed Schemes</span><span class="tc-sub">SISFS, FFS, CGSS</span></span>
+          <span class="tarrow">→</span>
+        </button>
+        <button class="topic-card" data-chat-page="How do I protect my intellectual property?">
+          <span class="tc-ic">5</span>
+          <span class="tc-body"><span class="tc-title">IPR Support</span><span class="tc-sub">Patents, trademarks, designs</span></span>
+          <span class="tarrow">→</span>
+        </button>
+        <button class="topic-card" data-chat-page="How do I take my product to the Indian market?">
+          <span class="tc-ic">6</span>
+          <span class="tc-body"><span class="tc-title">Go-to-Market</span><span class="tc-sub">Pricing &amp; channels in India</span></span>
+          <span class="tarrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>The knowledge base</h2>
+        <p>Curated from official, public Startup India handbooks.</p>
+      </div>
+      <div class="sources-strip">
+        <span class="source-pill"><span class="dot"></span>Startup India Kit (2020 &amp; v5)</span>
+        <span class="source-pill"><span class="dot"></span>India Startup Law &amp; Policy Guidebook</span>
+        <span class="source-pill"><span class="dot"></span>Startup Registration Complete Guide</span>
+        <span class="source-pill"><span class="dot"></span>Go-to-Market Guide for India</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Stuck on step one of registering?</h2>
+        <p>Ask Saarthi anything and get an answer pulled from the guides in seconds.</p>
+        <a class="btn btn-primary" href="assistant.html">Chat with Saarthi</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><canvas data-orb data-state="working" data-size="34" data-theme="auto"></canvas></span>
+        Startup Saarthi
+      </a>
+      <p class="footer-note">
+        UI concept for a RAG assistant built on the Startup India Kit corpus. Prototype only - not yet connected to the retrieval pipeline.
+      </p>
+    </div>
+  </footer>
+
+  <script src="orb.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
