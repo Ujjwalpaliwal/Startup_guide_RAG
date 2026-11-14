@@ -11,7 +11,8 @@ import sys
 
 from dotenv import load_dotenv
 from fastembed import TextEmbedding
-from qdrant_client.qdrant_remote import QdrantRemote as QdrantClient
+
+from rag_project.qdrant_conn import get_qdrant
 
 # Fix Windows console encoding
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -21,12 +22,8 @@ load_dotenv()
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 
-def get_client() -> QdrantClient:
-    url = os.getenv("QDRANT_URL")
-    api_key = os.getenv("QDRANT_API_KEY")
-    if not url or not api_key:
-        raise SystemExit("Missing QDRANT_URL / QDRANT_API_KEY in .env")
-    return QdrantClient(url=url, api_key=api_key)
+def get_client():
+    return get_qdrant()
 
 
 def main():

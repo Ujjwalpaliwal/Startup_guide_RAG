@@ -4,11 +4,13 @@ Used by the phase5 CLI and the FastAPI server.
 """
 
 import os
+import re
 
 from dotenv import load_dotenv
 from fastembed import TextEmbedding
 from groq import Groq
-from qdrant_client.qdrant_remote import QdrantRemote as QdrantClient
+
+from .qdrant_conn import get_qdrant
 
 load_dotenv()
 
@@ -20,18 +22,21 @@ SYSTEM_PROMPT = (
     "Answer the user's question using ONLY the provided context. "
     "If the context does not contain the answer, say you couldn't find it in the documents. "
     "Cite your sources using bracketed numbers like [1], [2] matching the provided sources. "
-    "Be concise but complete, and use bullet points when helpful."
+    "Be concise but complete, and use bullet points when helpful. "
+    "Do not include internal citation tokens such as \u30101\u2020L1-L3\u3011."
 )
 
+_CITATION_ARTIFACT = re.compile(r"\u3010[^\u3011]*\u3011")
+
+
+def clean_answer(text: str) -> str:
+    text = _CITATION_ARTIFACT.sub("", text)
+    text = re.sub(r"[\u00a0\u202f]", " ", text)
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
 _embedder: TextEmbedding | None = None
-
-
-def get_qdrant() -> QdrantClient:
-    url = os.getenv("QDRANT_URL")
-    api_key = os.getenv("QDRANT_API_KEY")
-    if not url or not api_key:
-        raise SystemExit("Missing QDRANT_URL / QDRANT_API_KEY in .env")
-    return QdrantClient(url=url, api_key=api_key)
 
 
 def get_embedder() -> TextEmbedding:
@@ -92,7 +97,7 @@ def generate_answer(
             },
         ],
     )
-    return chat.choices[0].message.content.strip()
+    return clean_answer(chat.choices[0].message.content)
 
 
 def answer_query(

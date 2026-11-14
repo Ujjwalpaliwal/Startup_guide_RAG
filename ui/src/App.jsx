@@ -1,4 +1,23 @@
 import { useState } from "react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+const CITATION_ARTIFACT = /\u3010[^\u3011]*\u3011/g;
+
+function cleanAnswer(text) {
+  return (text || "")
+    .replace(CITATION_ARTIFACT, "")
+    .replace(/[\u00a0\u202f]/g, " ")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+const MARKDOWN_COMPONENTS = {
+  a: ({ node, ...props }) => (
+    <a {...props} target="_blank" rel="noreferrer noopener" />
+  ),
+};
 
 function SourceList({ sources }) {
   if (!sources || sources.length === 0) return null;
@@ -85,7 +104,18 @@ export default function App() {
         {messages.map((m, i) => (
           <div key={i} className={`msg ${m.role}`}>
             <div className="bubble">
-              <pre>{m.content}</pre>
+              {m.role === "assistant" ? (
+                <div className="markdown">
+                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    components={MARKDOWN_COMPONENTS}
+                  >
+                    {cleanAnswer(m.content)}
+                  </Markdown>
+                </div>
+              ) : (
+                <p className="plain">{m.content}</p>
+              )}
               {m.role === "assistant" && <SourceList sources={m.sources} />}
             </div>
           </div>

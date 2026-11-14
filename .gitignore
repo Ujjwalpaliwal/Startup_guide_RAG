@@ -11,3 +11,6 @@ wheels/
 
 # Secrets / environment variables
 .env
+
+# Local Qdrant storage
+qdrant_storage/

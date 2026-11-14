@@ -5,6 +5,7 @@ Phase 3: Qdrant Storage
 - Reads connection details from .env
 """
 
+import argparse
 import json
 import os
 import sys
@@ -15,6 +16,8 @@ from dotenv import load_dotenv
 from qdrant_client.http import models
 from qdrant_client.qdrant_remote import QdrantRemote as QdrantClient
 from tqdm import tqdm
+
+from rag_project.qdrant_conn import get_qdrant
 
 # Fix Windows console encoding
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -27,14 +30,6 @@ METADATA_FILE = EMBEDDINGS_DIR / "metadata.json"
 MODEL_INFO_FILE = EMBEDDINGS_DIR / "model_info.json"
 
 BATCH_SIZE = 100
-
-
-def get_client() -> QdrantClient:
-    url = os.getenv("QDRANT_URL")
-    api_key = os.getenv("QDRANT_API_KEY")
-    if not url or not api_key:
-        raise SystemExit("Missing QDRANT_URL / QDRANT_API_KEY in .env")
-    return QdrantClient(url=url, api_key=api_key)
 
 
 def get_collection_name() -> str:
@@ -58,6 +53,14 @@ def ensure_collection(client: QdrantClient, name: str, dim: int) -> bool:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Upload embeddings to Qdrant")
+    parser.add_argument(
+        "--local",
+        action="store_true",
+        help="Use the local Qdrant instance instead of the cloud cluster",
+    )
+    args = parser.parse_args()
+
     print("Loading embeddings...")
     vectors = np.load(VECTORS_FILE)
     with open(METADATA_FILE, "r", encoding="utf-8") as f:
@@ -74,7 +77,7 @@ def main():
         raise SystemExit("Mismatch: vectors.npy and metadata.json lengths differ")
 
     print("\nConnecting to Qdrant...")
-    client = get_client()
+    client = get_qdrant(force_local=args.local)
     collection = get_collection_name()
     print(f"  Cluster: {client.get_collections().collections}")
 
