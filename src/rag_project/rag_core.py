@@ -16,6 +16,8 @@ load_dotenv()
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 DEFAULT_LLM = "openai/gpt-oss-120b"
+DEFAULT_LANGUAGE = "en"
+SUPPORTED_LANGUAGES = ("en", "hi")
 
 SYSTEM_PROMPT = (
     "You are a helpful assistant for entrepreneurs researching startups in India. "
@@ -25,6 +27,19 @@ SYSTEM_PROMPT = (
     "Be concise but complete, and use bullet points when helpful. "
     "Do not include internal citation tokens such as \u30101\u2020L1-L3\u3011."
 )
+
+LANGUAGE_INSTRUCTIONS = {
+    "en": "Respond in English.",
+    "hi": (
+        "Respond in Hindi using Devanagari script. Keep widely used technical terms "
+        "(e.g. DPIIT, GST, LLP) in English where natural."
+    ),
+}
+
+NO_RESULTS = {
+    "en": "No relevant documents were found in the index.",
+    "hi": "इंडेक्स में कोई संबंधित दस्तावेज़ नहीं मिला।",
+}
 
 _CITATION_ARTIFACT = re.compile(r"\u3010[^\u3011]*\u3011")
 
@@ -70,12 +85,18 @@ def build_context(hits) -> tuple[str, list[dict]]:
     return "\n\n---\n\n".join(parts), sources
 
 
+def build_system_prompt(language: str = DEFAULT_LANGUAGE) -> str:
+    instruction = LANGUAGE_INSTRUCTIONS.get(language, LANGUAGE_INSTRUCTIONS[DEFAULT_LANGUAGE])
+    return f"{SYSTEM_PROMPT} {instruction}"
+
+
 def generate_answer(
     query: str,
     context: str,
     model: str = DEFAULT_LLM,
     temperature: float = 0.3,
     max_tokens: int = 1024,
+    language: str = DEFAULT_LANGUAGE,
 ) -> str:
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
@@ -87,7 +108,7 @@ def generate_answer(
         temperature=temperature,
         max_tokens=max_tokens,
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": build_system_prompt(language)},
             {
                 "role": "user",
                 "content": (
@@ -106,14 +127,17 @@ def answer_query(
     model: str = DEFAULT_LLM,
     temperature: float = 0.3,
     max_tokens: int = 1024,
+    language: str = DEFAULT_LANGUAGE,
 ) -> dict:
     hits = retrieve(query, top_k)
     if not hits:
         return {
-            "answer": "No relevant documents were found in the index.",
+            "answer": NO_RESULTS.get(language, NO_RESULTS[DEFAULT_LANGUAGE]),
             "sources": [],
         }
 
     context, sources = build_context(hits)
-    answer = generate_answer(query, context, model, temperature, max_tokens)
+    answer = generate_answer(
+        query, context, model, temperature, max_tokens, language
+    )
     return {"answer": answer, "sources": sources}
